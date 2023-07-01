@@ -8,9 +8,19 @@ process.env.PORT = process.env.PORT || 3000;
 //===============
 process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 
-//===============
-//Base de Datos
-//===============
+//=====================
+//Vencimiento del Token
+//=====================
+// 60 segundos 
+// 60 minutos
+// 24 horas
+// 30 dias
+process.env.VENC_TOKEN = 6000 * 60 * 24 * 30;
+
+//=====================
+//SEED de autenticacion
+//=====================
+process.env.SEED_TOKEN = process.env.SEED_TOKEN || 'este-es-el-ser-ed-desarrollo';
 
 let urlDB;
 if (process.env.NODE_ENV === 'dev') {

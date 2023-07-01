@@ -7,11 +7,13 @@ const initDB = require('./connect');
 require('./config/config');
 require('../server/controllers/control');
 
-app.use(require('./controllers/control'));
-// parse application/x-www-form-urlencoded
+//--Configuracion global de rutas--//
+app.use(require('./controllers/index'));
+
+//--parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
-// parse application/json
+//--parse application/json
 app.use(bodyParser.json())
 
 
