@@ -29,4 +29,10 @@ if (process.env.NODE_ENV === 'dev') {
     urlDB = 'mongodb+srv://leonardglez12485:Realmadridfc*13@cluster0.lczn6m6.mongodb.net/cafe';
     // mongodb + srv: //mern-user:M1UAoMxrwrDJ8UN1@cluster0.zebxd.mongodb.net/db_calendar
 }
+
 process.env.URLDB = urlDB;
+
+//=====================
+// Google Client ID
+//=====================
+process.env.GOOGLECLIENT_ID = process.env.GOOGLECLIENT_ID || '164147363667-q1pbmjjrpks9q8t7dlrmpsc5eprpi9dr.apps.googleusercontent.com'
