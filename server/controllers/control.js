@@ -70,7 +70,7 @@ app.post('/usuario', (req, res) => {
             res.json({
                 ok: true
             });
-            return console.log('Added to DataBase !!!!!');
+            return console.log('New User Added to DataBase !!!!!');
         })
         .catch((error) => console.log(error));
 
