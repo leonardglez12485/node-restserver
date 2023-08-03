@@ -37,6 +37,7 @@ app.use(require('./controllers/index'));
 //--habilitar la carpeta public
 
 app.use(express.static(path.resolve(__dirname, '../public/')), cors(corsOptions));
+app.use(express.static(path.resolve(__dirname, '../upload/')));
 //console.log(path.resolve(__dirname, '../public/'));
 
 //--parse application/x-www-form-urlencoded
@@ -44,8 +45,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 //--parse application/json
 app.use(bodyParser.json())
-
-
 
 
 initDB;

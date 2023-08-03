@@ -6,6 +6,7 @@ let rolesValidos = {
     values: ['USER_ROLE', 'ADMIN_ROLE', 'SUPER_ADMIN'],
     message: '{VALUE} no es un role valido'
 };
+
 let Schema = mongoose.Schema;
 let userSchema = new Schema({
     nombre: {

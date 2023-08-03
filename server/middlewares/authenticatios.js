@@ -7,39 +7,51 @@ const jwt_decode = require('jwt-decode');
 //=====================
 
 let verifyToken = (req, res, next) => {
-        const token = req.header('token')
-        if (!token) return res.status(401).json({ error: 'Acceso denegado' })
-        try {
-            const verified = jwt.verify(token, process.env.SEED_TOKEN)
-            req.User = verified
-                // services.decodeToken(token)
-                //     .then(response => {
-                //         req.user = response
-                //         next()
-                //     })
-                // req.User = verified
-            next() // continuamos
+    const token = req.header('token')
+    if (!token) return res.status(401).json({ error: 'Acceso denegado' })
+    try {
+        const verified = jwt.verify(token, process.env.SEED_TOKEN)
+        req.User = verified
+        next() // continuamos
 
-        } catch (error) {
-            res.status(400).json({ error: 'token no es válido' })
-        }
-
+    } catch (error) {
+        res.status(400).json({ error: 'token no es válido' })
     }
-    //===========================
-    //Otra forma de implementarlo
-    //===========================
-    //let verifyToken = (req, res, next) => {
-    // let token = req.get('token');
-    // let use;
-    // jwt.verify(token, process.env.SEED_TOKEN, (err, usuario) => {
-    //     if (err) {
-    //         res.status(401).json({
-    //             ok: false,
-    //             err: {
-    //                 message: 'Token no valido !!!!!!'
-    //             }
-    //         });
-    //     }
+
+};
+
+
+//=================================
+//Verificacion de Token pa Imagenes
+//=================================
+let verifyTokenImg = (req, res, next) => {
+    let token = req.query.token;
+    if (!token) return res.status(401).json({ error: 'Acceso denegado' })
+    try {
+        const verified = jwt.verify(token, process.env.SEED_TOKEN)
+        req.User = verified
+        next() // continuamos
+
+    } catch (error) {
+        res.status(400).json({ error: 'Invalid Token' })
+    }
+}
+
+//===========================
+//Otra forma de implementarlo
+//===========================
+//let verifyToken = (req, res, next) => {
+// let token = req.get('token');
+// let use;
+// jwt.verify(token, process.env.SEED_TOKEN, (err, usuario) => {
+//     if (err) {
+//         res.status(401).json({
+//             ok: false,
+//             err: {
+//                 message: 'Token no valido !!!!!!'
+//             }
+//         });
+//     }
 
 //     req.User = usuario;
 //     next();
@@ -69,4 +81,4 @@ let verifyAdmin = (req, res, next) => {
 
 }
 
-module.exports = { verifyToken, verifyAdmin }
+module.exports = { verifyToken, verifyAdmin, verifyTokenImg }
